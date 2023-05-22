@@ -13,7 +13,7 @@ Un serveur web local (par exemple, Apache)
 Étapes d'installation :
 
 1. Clonez ce référentiel GitHub sur votre machine locale :
-git clone https://github.com/votre-utilisateur/nom-du-repo.git
+git clone https://github.com/Halozor/le-quai-antique.git
 
 2. Importez la base de données :
 Ouvrez votre client MySQL et connectez-vous à votre serveur de base de données.
