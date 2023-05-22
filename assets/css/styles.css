@@ -1,0 +1,481 @@
+.bodonimt {
+  font-family: 'Bodoni MT', sans-serif;
+}
+
+.barlowcondensed {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cc-navbar {
+  background-color: rgba(228, 229, 221, 1);
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+  box-shadow: 1px 1px 3px rgba(38, 36, 36, 0.50);
+  z-index: 99;
+}
+
+.cc-navbar .nav-link {
+  border-bottom: 1px solid transparent;
+  transition: padding-bottom 0.3s ease-in-out, border-color 0.3s ease;
+}
+
+.cc-navbar .nav-link:hover {
+  padding-bottom: 12px;
+  border-bottom-color: rgba(76, 58, 36, 1);
+}
+
+.nav-link {
+  color: rgb(0, 0, 0) !important;
+}
+
+.navbar-toggler {
+  order: -1;
+}
+
+.logo {
+  max-width: 100px;
+}
+
+.logo-connex {
+  max-width: 60px;
+}
+
+.logo-reserv {
+  max-width: 70px;
+}
+
+.menu {
+  max-width: 50px;
+}
+
+.title1 {
+  font-size: 2rem;
+  font-weight: lighter;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  margin-bottom: -20px;
+  margin-top: -20px;
+}
+
+.title2 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  max-width: 100%;
+  margin-top: -5px;
+}
+
+.separator {
+  text-align: center;
+  height: 3px;
+  margin: 40px auto;
+  background-color: rgba(76, 58, 36);
+}
+
+.about {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: medium;
+  font-size: 2rem;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  margin-top: -100px;
+}
+
+.about-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: medium;
+  font-size: 1.2rem;
+  color: rgb(0, 0, 0);
+  margin-bottom: 50px;
+  margin-top: -30px;
+}
+
+.fav-dishes {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: medium;
+  font-size: 2rem;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.fav-dishes-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: medium;
+  font-size: 1.2rem;
+  color: rgb(0, 0, 0);
+  margin-top: -50px;
+}
+
+.h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: medium;
+  font-size: 2rem;
+  color: rgb(0, 0, 0);
+}
+
+.card-page-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  max-width: 100%;
+  margin-top: -30px;
+}
+
+.card-page-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: medium;
+  font-size: 1.2rem;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  margin-top: 30px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.entrée-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: medium;
+  font-size: 2rem;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  margin-top: -80px;
+}
+
+.plat-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: medium;
+  font-size: 2rem;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.dessert-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: medium;
+  font-size: 2rem;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+
+.formule-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: medium;
+  font-size: 2rem;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+.menu-page-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: medium;
+  font-size: 1.2rem;
+  color: rgb(0, 0, 0);
+  margin-top: -30px;
+}
+
+.menu-card {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 1px solid rgba(76, 58, 36, 1);
+  border-radius: 1px;
+  box-shadow: 1px 1px 2px rgba(38, 36, 36, 0.50);
+}
+
+.menu-card-header {
+  background-color: rgba(228, 229, 221, 1);
+  padding: 10px;
+  text-align: center;
+  font-family: 'barlow condensed', sans-serif;
+  font-weight: medium;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+.our-menus {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: medium;
+  font-size: 2rem;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.menu-title {
+  cursor: pointer;
+}
+
+.menu-title.active {
+  background-color: rgba(76, 58, 36, 1) !important;
+  color: white !important;
+}
+
+.menu-card-header .nav-link {
+  color: white;
+}
+
+.menu-card-body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: medium;
+  font-size: 1rem;
+  padding: 20px;
+  text-align: center;
+}
+
+.menus-lists {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -80px;
+}
+
+
+.order-form {
+  margin-top: -100px;
+}
+
+.register-form {
+  margin-top: -100px;
+}
+
+.connect-form {
+  margin-top: -100px;
+}
+
+
+.content-404 {
+  font-family: 'Montserrat', sans-serif;
+  margin-top: -100px;
+  margin-bottom: 20px;
+}
+
+
+footer {
+  background-color: rgba(228, 229, 221, 1);
+}
+
+.content-footer {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 1rem;
+  padding: 50px 0 50px;
+  margin-left: 100px;
+}
+
+.bloc {
+  flex-basis: 20%;
+  margin: 0 20px;
+}
+
+/* Contact */
+.footer-contact h3,
+.footer-infos h3,
+.footer-schedule h3,
+.footer-medias h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  padding-bottom: 20px;
+}
+
+/* Infos */
+.infos-list,
+.schedule-list,
+.contact-list,
+.media-list {
+  list-style-type: none;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  right: 35px;
+  font-size: 1rem;
+}
+
+.infos-list li {
+  padding: 2px 0px;
+}
+
+.infos-list a {
+  text-decoration: none;
+  color: #333;
+}
+
+.infos-list a:hover {
+  color: #729B79;
+}
+
+/* Medias */
+.media-list svg {
+  font-size: 125%;
+  color: #729B79;
+  ;
+}
+
+.media-list a {
+  text-decoration: none;
+  color: #333;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.media-list a:hover {
+  color: #729B79;
+}
+
+
+.btn-reserve {
+  border: 2px solid #729B79;
+  color: #000000;
+  background-color: rgba(228, 229, 221, 1);
+  transition: all 0.3s ease;
+  padding: 10px 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 70px;
+}
+
+.btn-reserve:hover {
+  background-color: #729B79;
+  color: #fff;
+}
+
+.reserv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-register {
+  border: 2px solid #729B79;
+  color: #000000;
+  background-color: rgba(228, 229, 221, 1);
+  transition: all 0.3s ease;
+  padding: 10px 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 70px;
+}
+
+.btn-register:hover {
+  background-color: #729B79;
+  color: #fff;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -30px;
+}
+
+.btn-connect {
+  border: 2px solid #729B79;
+  color: #000000;
+  background-color: rgba(228, 229, 221, 1);
+  transition: all 0.3s ease;
+  padding: 10px 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.btn-connect:hover {
+  background-color: #729B79;
+  color: #fff;
+}
+
+.connect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-accueil {
+  border: 2px solid #729B79;
+  color: #000000;
+  background-color: rgba(228, 229, 221, 1);
+  transition: all 0.3s ease;
+  padding: 10px 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 100px;
+}
+
+.btn-accueil:hover {
+  background-color: #729B79;
+  color: #fff;
+}
+
+.accueil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media queries */
+@media screen and (max-width: 1000px) {
+
+  .content-footer {
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .bloc {
+    flex-basis: auto;
+    margin: 20px 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .content-footer {
+    justify-content: center;
+    padding-top: 30px;
+  }
+
+  .bloc {
+    flex-basis: 70%;
+    margin: 10px;
+  }
+
+  .footer-contact h3,
+  .footer-informations h3,
+  .footer-schedule h3,
+  .footer-medias h3 {
+    padding-bottom: 5px;
+  }
+}
