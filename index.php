@@ -44,19 +44,19 @@ if (!$result) {
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="assets/img/Carousel/carousel1.gif" class="img-fluid" class="d-block w-100" alt="..." />
+          <img src="assets/img/carousel/carousel1.gif" class="img-fluid" class="d-block w-100" alt="..." />
         </div>
         <div class="carousel-item">
-          <img src="assets/img/Carousel/carousel2.jpg" class="img-fluid" class="d-block w-100" alt="..." />
+          <img src="assets/img/carousel/carousel2.jpg" class="img-fluid" class="d-block w-100" alt="..." />
         </div>
         <div class="carousel-item">
-          <img src="assets/img/Carousel/carousel3.gif" class="img-fluid" class="d-block w-100" alt="..." />
+          <img src="assets/img/carousel/carousel3.gif" class="img-fluid" class="d-block w-100" alt="..." />
         </div>
         <div class="carousel-item">
-          <img src="assets/img/Carousel/carousel4.jpg" class="img-fluid" class="d-block w-100" alt="..." />
+          <img src="assets/img/carousel/carousel4.jpg" class="img-fluid" class="d-block w-100" alt="..." />
         </div>
         <div class="carousel-item">
-          <img src="assets/img/Carousel/carousel5.gif" class="img-fluid" class="d-block w-100" alt="..." />
+          <img src="assets/img/carousel/carousel5.gif" class="img-fluid" class="d-block w-100" alt="..." />
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
