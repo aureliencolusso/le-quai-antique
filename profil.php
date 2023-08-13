@@ -1,6 +1,6 @@
 <?php
-include('header.php');
 include('connexion_bdd.php');
+include('header.php');
 
 // Vérifier si l'utilisateur est connecté
 if (isset($_SESSION['user_info'])) {

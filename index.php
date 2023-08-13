@@ -1,8 +1,9 @@
 <?php
-include('header.php');
 include('connexion_bdd.php');
+include('header.php');
 
-// Étape 3 : Récupération des données de la table "gallery"
+
+// Récupération des données de la table "gallery"
 $sql = 'SELECT * FROM gallery';
 $result = mysqli_query($connexion, $sql);
 
@@ -44,19 +45,19 @@ if (!$result) {
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="assets/img/carousel/carousel1.gif" class="img-fluid" class="d-block w-100" alt="..." />
+          <img src="assets/img/Carousel/carousel1.gif" class="img-fluid" class="d-block w-100" alt="..." />
         </div>
         <div class="carousel-item">
-          <img src="assets/img/carousel/carousel2.jpg" class="img-fluid" class="d-block w-100" alt="..." />
+          <img src="assets/img/Carousel/carousel2.jpg" class="img-fluid" class="d-block w-100" alt="..." />
         </div>
         <div class="carousel-item">
-          <img src="assets/img/carousel/carousel3.gif" class="img-fluid" class="d-block w-100" alt="..." />
+          <img src="assets/img/Carousel/carousel3.gif" class="img-fluid" class="d-block w-100" alt="..." />
         </div>
         <div class="carousel-item">
-          <img src="assets/img/carousel/carousel4.jpg" class="img-fluid" class="d-block w-100" alt="..." />
+          <img src="assets/img/Carousel/carousel4.jpg" class="img-fluid" class="d-block w-100" alt="..." />
         </div>
         <div class="carousel-item">
-          <img src="assets/img/carousel/carousel5.gif" class="img-fluid" class="d-block w-100" alt="..." />
+          <img src="assets/img/Carousel/carousel5.gif" class="img-fluid" class="d-block w-100" alt="..." />
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -94,51 +95,24 @@ if (!$result) {
       <div class="col-12">
         <div class="card-deck">
           <?php
-          // Vérifie si l'utilisateur est connecté et a le statut d'administrateur
-          if (isset($_SESSION['user_info']['is_admin']) && $_SESSION['user_info']['is_admin'] == 1) {
-            while ($row = mysqli_fetch_assoc($result)) {
-              $id = $row['id'];
-              $title = $row['title'];
-              $description = $row['description'];
-              $imagePath = $row['image_path'];
+          while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['id'];
+            $title = $row['title'];
+            $description = $row['description'];
+            $imagePath = $row['image_path'];
           ?>
-              <div class="col-12 my-4">
-                <div class="card">
-                  <div class="card-body">
-                    <h3 class="card-title"><?php echo $title; ?></h3>
-                    <p class="card-text"><?php echo $description; ?></p>
-                  </div>
-                  <img src="<?php echo $imagePath; ?>" class="card-img-top" alt="..." />
-                  <div class="card-footer">
-                    <a href="admin.php?action=add" class="btn btn-success">Ajouter</a>
-                    <a href="admin.php?action=edit&id=<?php echo $id; ?>" class="btn btn-primary">Modifier</a>
-                    <a href="admin.php?action=delete&id=<?php echo $id; ?>" class="btn btn-danger">Supprimer</a>
-                  </div>
+            <div class="col-12 my-4">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title"><?php echo $title; ?></h3>
+                  <p class="card-text"><?php echo $description; ?></p>
                 </div>
+                <img src="<?php echo $imagePath; ?>" class="card-img-top" alt="..." />
               </div>
-            <?php
-            }
-          } else {
-            while ($row = mysqli_fetch_assoc($result)) {
-              $id = $row['id'];
-              $title = $row['title'];
-              $description = $row['description'];
-              $imagePath = $row['image_path'];
-            ?>
-              <div class="col-12 my-4">
-                <div class="card">
-                  <div class="card-body">
-                    <h3 class="card-title"><?php echo $title; ?></h3>
-                    <p class="card-text"><?php echo $description; ?></p>
-                  </div>
-                  <img src="<?php echo $imagePath; ?>" class="card-img-top" alt="..." />
-                </div>
-              </div>
-        </div>
-    <?php
-            }
+            </div>
+          <?php
           }
-    ?>
+          ?>
         </div>
       </div>
     </div>

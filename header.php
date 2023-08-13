@@ -23,11 +23,14 @@ if (session_status() == PHP_SESSION_NONE) {
 
 	<!--Barre de Navigation-->
 	<nav class="cc-navbar navbar navbar-dark position-fixed w-100">
-		<div class="container-fluid d-flex justify-content-between">
-			<div class="d-flex align-items-center">
-				<a href="index.php"><img src="assets/img/autres/logo.png" class="logo" alt="Le Quai Antique"></a>
+		<div class="container-fluid justify-content-between">
+			<div class="align-items-center">
+				<a href="index.php"><img src="assets/img/autres/logo.png" class="logo-site" alt="Le Quai Antique"></a>
 			</div>
 			<div class="align-items-center">
+				<?php if (isset($_SESSION['user_info']) && $_SESSION['user_info']['is_admin'] == 1) { ?>
+					<a href="admin.php"><img src="assets/img/autres/admin.png" class="logo-admin" alt="Administration"></a>
+				<?php } ?>
 				<?php if (isset($_SESSION['reservation_info'])) { ?>
 					<a href="confirm_reservation.php"><img src="assets/img/autres/réservation.png" class="logo-reserv" alt="Réservation"></a>
 				<?php } else { ?>
@@ -53,6 +56,11 @@ if (session_status() == PHP_SESSION_NONE) {
 					<li class="nav-item pe-4">
 						<a class="nav-link" href="menus.php">Nos Menus</a>
 					</li>
+					<?php if (isset($_SESSION['user_info']) && $_SESSION['user_info']['is_admin'] == 1) { ?>
+						<li class="nav-item pe-4">
+							<a class="nav-link" href="admin.php">Administration</a>
+						</li>
+					<?php } ?>
 					<?php if (isset($_SESSION['reservation_info'])) { ?>
 						<li class="nav-item pe-4">
 							<a class="nav-link" href="confirm_reservation.php"><strong>Ma reservation</strong></a>

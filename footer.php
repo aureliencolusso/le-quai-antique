@@ -39,10 +39,6 @@ if (mysqli_num_rows($result) > 0) {
 			<h3>Nos Horaires</h3>
 			<ul class="schedule-list">
 				<?php
-				// Vérifier si l'utilisateur est connecté et a le statut d'administrateur
-				if (isset($_SESSION['user_info']['is_admin']) && $_SESSION['user_info']['is_admin'] == 1) {
-					echo '<a href="admin.php?action=edit_schedule" class="btn btn-primary">Modifier</a>';
-				}
 				// Afficher les horaires si des horaires existent dans la base de données
 				if (!empty($schedules)) {
 					foreach ($schedules as $day => $time) {

@@ -1,6 +1,6 @@
 <?php
-include('header.php');
 include('connexion_bdd.php');
+include('header.php');
 
 if (isset($_POST['btn-register'])) {
 	// Récupération des données du formulaire

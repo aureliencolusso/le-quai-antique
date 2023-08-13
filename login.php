@@ -1,6 +1,6 @@
 <?php
-include('header.php');
 include('connexion_bdd.php');
+include('header.php');
 
 
 // Vérification que le formulaire a été soumis
