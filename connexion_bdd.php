@@ -12,3 +12,6 @@ $connexion = mysqli_connect($host, $username, $password, $dbname);
 if (!$connexion) {
     die("Connexion échouée : " . mysqli_connect_error());
 }
+
+// Définis l'encodage des caractères en UTF-8
+mysqli_set_charset($connexion, "utf8");
