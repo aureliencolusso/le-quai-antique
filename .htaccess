@@ -1,0 +1,2 @@
+RewriteEngine On
+ErrorDocument 404 /lequaiantique/404.php
