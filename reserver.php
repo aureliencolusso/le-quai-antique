@@ -7,7 +7,7 @@ if (isset($_GET['message'])) {
 	$message = $_GET['message'];
 }
 
-// Récupération des données du formulaire
+// Récupère les données du formulaire
 if (isset($_POST['btn-reserver'])) {
 	$id = $_POST['id'];
 	$name = $_POST['name'];
@@ -20,7 +20,7 @@ if (isset($_POST['btn-reserver'])) {
 	$allergies = implode(",", $_POST['allergies']);
 	$other_info = $_POST['other_info'];
 
-	// Stockage des informations de réservation dans une session
+	// Stock les informations de réservation dans une session
 	$_SESSION['reservation_info'] = array(
 		'id' => $id,
 		'name' => $name,
@@ -34,55 +34,55 @@ if (isset($_POST['btn-reserver'])) {
 		'other_info' => $other_info
 	);
 
-	// Vérification que l'email respecte le motif
+	// Vérifie que l'email respecte le motif
 	$email_pattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
 	if (!preg_match($email_pattern, $email)) {
 		$email_error = "Veuillez entrer une adresse e-mail valide. Exemple : email@gmail.com";
 	}
-	// Vérification que le nom respecte le motif
+	// Vérifie que le nom respecte le motif
 	$name_pattern = '/^[A-Za-z\s]+$/';
 	if (!preg_match($name_pattern, $name)) {
 		$name_error = "Le nom ne doit contenir que des lettres alphabétiques et des espaces.";
 	}
-	// Vérification que le numéro de téléphone respecte le motif
+	// Vérifie que le numéro de téléphone respecte le motif
 	$phone_pattern = '/^\d{10}$/';
 	if (!preg_match($phone_pattern, $phone_number)) {
 		$phone_error = "Veuillez entrer un numéro de téléphone valide (10 chiffres).";
 	}
-	// Vérification de la capacité maximale
-	$query = "SELECT max_guests FROM restaurant WHERE id = 1";
-	$result = $connexion->query($query);
 
-	if ($result->num_rows > 0) {
-		$row = $result->fetch_assoc();
+	// Vérifie de la capacité maximale
+	$query = "SELECT max_guests FROM restaurant WHERE id = 1";
+	$stmt = $connexion->query($query);
+	$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	// Récupère la capacité maximale du restaurant
+	if ($row) {
 		$maxGuests = $row['max_guests'];
 		$totalGuests = 0;
 
-		// Calcul du nombre total de convives attendus à la date et heure de la réservation
+		// Calcul le nombre total de convives attendus à la date et heure de la réservation
 		$stmt = $connexion->prepare("SELECT nb_guests FROM reservations WHERE date = ? AND time = ?");
-		$stmt->bind_param("ss", $date, $time);
-		$stmt->execute();
-		$stmt->store_result();
+		$stmt->execute([$date, $time]);
 
-		$totalGuests = $stmt->num_rows;
+		// Récupère le nombre de convives attendus à la date et heure de la réservation
+		$totalGuests = $stmt->rowCount();
 
+		// Ajoute le nombre de convives de la réservation actuelle
 		$totalGuests += $nb_guests;
 
+		// Vérifie si la capacité maximale est atteinte et affiche un message d'erreur si c'est le cas
 		if ($totalGuests > $maxGuests) {
 			echo "Capacité maximale atteinte. La réservation ne peut pas être effectuée.";
 		} else {
-			// Insertion de la réservation dans la base de données
+			// Insert la réservation dans la base de données
 			$users_id = isset($_SESSION['user_info']['id']) ? $_SESSION['user_info']['id'] : 0;
 			$stmt = $connexion->prepare("INSERT INTO reservations (id, users_id, name, email, phone_number, menu, nb_guests, date, time, allergies, other_info)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-			$stmt->bind_param("iisssisssss", $id, $users_id, $name, $email, $phone_number, $menu, $nb_guests, $date, $time, $allergies, $other_info);
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			$stmt->execute([$id, $users_id, $name, $email, $phone_number, $menu, $nb_guests, $date, $time, $allergies, $other_info]);
 
-			if ($stmt->execute()) {
-				header("Location: confirm_reservation.php");
-				exit();
-			} else {
-				echo "Erreur lors de l'insertion de la réservation : " . $stmt->error;
-			}
+			// Redirige vers la page de confirmation
+			header("Location: confirm_reservation.php");
+			exit();
 		}
 	} else {
 		echo "Impossible de récupérer la capacité maximale du restaurant.";
