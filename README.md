@@ -25,7 +25,7 @@ Open the file (connection_bdd.php) in your application directory.
 Modify the connection parameters ($host, $username, $password, $dbname) to match your MySQL configuration.
 
 4. Start the local web server:
-Make sure your local web server (eg Apache) is running.
+Make sure your local web server (example : Apache) is running.
 Place the web application content in the appropriate directory for the web server to access.
 
 5. Access the application:
