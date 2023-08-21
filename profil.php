@@ -2,21 +2,41 @@
 include('connexion_bdd.php');
 include('header.php');
 
-// Vérifier si l'utilisateur est connecté
+// Vérifie si l'utilisateur est connecté
 if (isset($_SESSION['user_info'])) {
-    // Récupérer les informations de l'utilisateur
+    // Récupère les informations de l'utilisateur dans la session
     $email = $_SESSION['user_info']['email'];
-    $name = $_SESSION['user_info']['name'];
-    $phone_number = $_SESSION['user_info']['phone_number'];
-    $nb_guests = $_SESSION['user_info']['nb_guests'];
-    $allergies = $_SESSION['user_info']['allergies'];
+
+    // Récupère les informations de l'utilisateur
+    $query = "SELECT * FROM users WHERE email = :email";
+
+    // Prépare la requête
+    $stmt = $connexion->prepare($query);
+    $stmt->bindParam(':email', $email);
+
+    // Exécute la requête
+    $stmt->execute();
+
+    // Récupère les résultats de la requête
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Si l'utilisateur est trouvé, récupère les informations
+    if ($user) {
+        $name = $user['name'];
+        $phone_number = $user['phone_number'];
+        $nb_guests = $user['nb_guests'];
+        $allergies = $user['allergies'];
+    } else {
+        // Si l'utilisateur n'est pas trouvé, redirige vers la page de connexion
+        header("Location: login.php");
+        exit();
+    }
 } else {
-    // L'utilisateur n'est pas connecté, rediriger vers la page de connexion
+    // Si l'utilisateur n'est pas connecté, redirige vers la page de connexion
     header("Location: login.php");
     exit();
 }
 ?>
-
 
 <!--Titres-->
 <section class="banner d-flex justify-content-center align-items-center pt-5">
@@ -27,7 +47,7 @@ if (isset($_SESSION['user_info'])) {
                     <span class="bodonimt">Profil</span>
                 </h1>
                 <div class="card-page-text">
-                    Bienvenue sur votre profil, <?php echo $_SESSION['user_info']['name'] ?> !
+                    Bienvenue sur votre profil, <?php echo $name ?> !
                 </div>
                 <div class="separator"></div>
             </div>
@@ -43,11 +63,11 @@ if (isset($_SESSION['user_info'])) {
                 <h2 class="formule-title">Informations de votre compte</h2>
                 <div class="infos-user">
                     <ul class="list-unstyled">
-                        <strong>Nom :</strong> <?php echo $_SESSION['user_info']['name']; ?><br />
-                        <strong>E-mail :</strong> <?php echo $_SESSION['user_info']['email']; ?><br />
-                        <strong>Téléphone :</strong> <?php echo $_SESSION['user_info']['phone_number']; ?><br />
-                        <strong>Convives par défaut :</strong> <?php echo $_SESSION['user_info']['nb_guests']; ?><br />
-                        <strong>Allergies :</strong> <?php echo $_SESSION['user_info']['allergies'] ?>
+                        <strong>Nom :</strong> <?php echo $name; ?><br />
+                        <strong>E-mail :</strong> <?php echo $email; ?><br />
+                        <strong>Téléphone :</strong> <?php echo $phone_number; ?><br />
+                        <strong>Convives par défaut :</strong> <?php echo $nb_guests; ?><br />
+                        <strong>Allergies :</strong> <?php echo $allergies; ?>
                     </ul>
                 </div>
             </div>
@@ -55,11 +75,9 @@ if (isset($_SESSION['user_info'])) {
     </div>
 </section>
 
-
 <!--Bouton Déconnexion-->
 <div class="reserv container">
     <a href="logout.php"><button type="button" class="btn btn-outline-success btn-reserve">Déconnexion</button></a>
 </div>
-
 
 <?php include('footer.php'); ?>
