@@ -134,7 +134,7 @@ if (isset($_POST['btn-register'])) {
 				<div class="cgu d-flex justify-content-center align-items-center">
 					<div class="form-group text-center">
 						<label for="accept-cgu">
-							J'accepte les <a href="conditions_generales_utilisation.php" target="_blank">conditions générales d'utilisation</a>
+							J'accepte les <a href="terms_of_service.php" target="_blank">conditions générales d'utilisation</a>
 						</label>
 						<div class="form-check d-inline-flex">
 							<input class="form-check-input" type="checkbox" value="accepted" id="accept-cgu" name="accept-cgu" required>
