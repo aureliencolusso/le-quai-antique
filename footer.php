@@ -2,15 +2,13 @@
 include('connexion_bdd.php');
 
 $query = "SELECT day, time FROM schedules";
-$result = mysqli_query($connexion, $query);
+$stmt = $connexion->prepare($query);
+$stmt->execute();
 
-// Vérifier si des horaires existent dans la base de données
-if (mysqli_num_rows($result) > 0) {
-	// Créer un tableau associatif avec les horaires récupérés
-	$schedules = array();
-	while ($row = mysqli_fetch_assoc($result)) {
-		$schedules[$row['day']] = $row['time'];
-	}
+// Crée un tableau associatif avec les horaires
+$schedules = array();
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+	$schedules[$row['day']] = $row['time'];
 }
 ?>
 
@@ -39,7 +37,7 @@ if (mysqli_num_rows($result) > 0) {
 			<h3>Nos Horaires</h3>
 			<ul class="schedule-list">
 				<?php
-				// Afficher les horaires si des horaires existent dans la base de données
+				// Affiche les horaires présentes dans la base de données
 				if (!empty($schedules)) {
 					foreach ($schedules as $day => $time) {
 						echo "<li>$day : $time</li>";
