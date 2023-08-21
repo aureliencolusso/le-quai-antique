@@ -1,17 +1,16 @@
 <?php
-// Les informations de connexion à la base de données
 $host = "localhost";
 $username = "root";
 $password = "root";
 $dbname = "lequaiantique";
 
-// Connexion à la base de données
-$connexion = mysqli_connect($host, $username, $password, $dbname);
+try {
+    // Connexion à la base de données avec PDO
+    $connexion = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
 
-// Vérification de la connexion
-if (!$connexion) {
-    die("Connexion échouée : " . mysqli_connect_error());
+    // Configure PDO pour générer des exceptions en cas d'erreur
+    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connexion échouée : " . $e->getMessage());
 }
-
-// Définis l'encodage des caractères en UTF-8
-mysqli_set_charset($connexion, "utf8");
+?>
