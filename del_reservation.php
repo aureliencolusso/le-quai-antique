@@ -6,17 +6,20 @@ session_start();
 if (isset($_SESSION['reservation_info']['id'])) {
     $id = $_SESSION['reservation_info']['id'];
 
-    // Suppression de la réservation dans la base de données en utilisant l'ID de réservation
-    $query = "DELETE FROM reservations WHERE id = '$id'";
+    // Supprime la réservation dans la base de données en utilisant l'ID
+    $query = "DELETE FROM reservations WHERE id = :id";
+    $stmt = $connexion->prepare($query);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
-    if ($connexion->query($query) === true) {
-        // Suppression réussie, réinitialisation de la session reservation_info
+    if ($stmt->execute()) {
+        // Si suppression réussie, réinitialise la session reservation_info
         unset($_SESSION['reservation_info']['id']);
+        unset($_SESSION['reservation_info']);
 
-        // Redirection vers reserver.php avec un message de succès
+        // Redirige vers reserver.php avec un message de succès
         header("Location: reserver.php?message=La réservation a été supprimée avec succès !");
     } else {
-        // Erreur lors de la suppression, redirigez vers reserver.php avec un message d'erreur
+        // Si suppression échoué, redirige vers reserver.php avec un message d'erreur
         header("Location: reserver.php?error=1");
     }
     exit();
