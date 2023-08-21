@@ -3,7 +3,7 @@ include('connexion_bdd.php');
 include('header.php');
 
 if (isset($_POST['btn-register'])) {
-	// Récupération des données du formulaire
+	// Récupère les données du formulaire
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	$name = $_POST['name'];
@@ -11,36 +11,25 @@ if (isset($_POST['btn-register'])) {
 	$nb_guests = $_POST['nb_guests'];
 	$allergies = implode(",", $_POST['allergies']);
 
-	// Stockage des données dans une variable de session
-	$_SESSION['user_info'] = array(
-		'email' => $email,
-		'name' => $name,
-		'phone_number' => $phone_number,
-		'nb_guests' => $nb_guests,
-		'allergies' => $allergies,
-		'is_admin' => $is_admin,
-		'id' => $id
-	);
-
-	// Vérification que l'email respecte le motif
+	// Vérifie que l'email respecte le motif
 	$email_pattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
 	if (!preg_match($email_pattern, $email)) {
 		$email_error = "Veuillez entrer une adresse e-mail valide. Exemple : email@gmail.com";
 	}
 
-	// Vérification que le mot de passe respecte le motif
+	// Vérifie que le mot de passe respecte le motif
 	$password_pattern = '/^(?=.*\d).{6,}$/';
 	if (!preg_match($password_pattern, $password)) {
-		$password_error = "Le mot de passe doit contenir au moins 6 caractères et au moins 1 chiffre.";
+		$password_error = "Le mot de passe doit contenir au moins 8 caractères et au moins 1 chiffre.";
 	}
 
-	// Vérification que le nom respecte le motif
+	// Vérifie que le nom respecte le motif
 	$name_pattern = '/^[A-Za-z\s]+$/';
 	if (!preg_match($name_pattern, $name)) {
 		$name_error = "Le nom ne doit contenir que des lettres alphabétiques et des espaces.";
 	}
 
-	// Vérification que le numéro de téléphone respecte le motif
+	// Vérifie que le numéro de téléphone respecte le motif
 	$phone_pattern = '/^\d{10}$/';
 	if (!preg_match($phone_pattern, $phone_number)) {
 		$phone_error = "Veuillez entrer un numéro de téléphone valide (10 chiffres).";
@@ -49,17 +38,23 @@ if (isset($_POST['btn-register'])) {
 	// Hashage du mot de passe
 	$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-	// Insertion des données dans la base de données
+	// Insert les données dans la base de données en utilisant une requête préparée
 	$requete = "INSERT INTO users (email, password, name, phone_number, nb_guests, allergies) VALUES (?, ?, ?, ?, ?, ?)";
-	$stmt = mysqli_prepare($connexion, $requete);
-	mysqli_stmt_bind_param($stmt, "ssssis", $email, $hashed_password, $name, $phone_number, $nb_guests, $allergies);
+	$stmt = $connexion->prepare($requete);
+	$stmt->execute([$email, $hashed_password, $name, $phone_number, $nb_guests, $allergies]);
 
-	// Exécution de la requête
-	if (mysqli_stmt_execute($stmt)) {
-		header("Location: profil.php");
-	} else {
-		echo "Erreur d'inscription : " . mysqli_error($connexion);
-	}
+	// Démarre la session
+	$_SESSION['user_info'] = array(
+		'email' => $email,
+		'name' => $name,
+		'phone_number' => $phone_number,
+		'nb_guests' => $nb_guests,
+		'allergies' => $allergies,
+	);
+
+	// Redirige vers la page de profil
+	header("Location: profil.php");
+	exit();
 }
 ?>
 
@@ -150,6 +145,5 @@ if (isset($_POST['btn-register'])) {
 		</form>
 	</div>
 </section>
-
 
 <?php include('footer.php'); ?>
