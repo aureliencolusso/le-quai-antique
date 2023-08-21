@@ -2,13 +2,12 @@
 include('connexion_bdd.php');
 include('header.php');
 
-
-// Récupération des données de la table "gallery"
+// Récupère les données de la table "gallery"
 $sql = 'SELECT * FROM gallery';
-$result = mysqli_query($connexion, $sql);
+$result = $connexion->query($sql);
 
 if (!$result) {
-  die('Erreur dans la requête : ' . mysqli_error($connexion));
+  die('Erreur dans la requête : ' . $connexion->errorInfo()[2]);
 }
 ?>
 
@@ -95,7 +94,12 @@ if (!$result) {
       <div class="col-12">
         <div class="card-deck">
           <?php
-          while ($row = mysqli_fetch_assoc($result)) {
+          $query = "SELECT id, title, description, image_path FROM gallery";
+          $stmt = $connexion->prepare($query);
+          $stmt->execute();
+
+          // Récupère les données de la table "gallery" et les affiche
+          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
             $title = $row['title'];
             $description = $row['description'];
@@ -118,6 +122,7 @@ if (!$result) {
     </div>
   </div>
 </section>
+
 
 
 <!-- Séparateur -->
