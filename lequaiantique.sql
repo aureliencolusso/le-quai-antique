@@ -12,6 +12,10 @@
 -- Table structure for table `gallery`
 --
 
+CREATE DATABASE lequaiantique
+DEFAULT CHARACTER SET utf8mb4
+COLLATE utf8_general_ci;
+
 CREATE TABLE `gallery` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
